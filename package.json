@@ -1,6 +1,6 @@
 {
   "name": "@lenne.tech/npm-package-helper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Helper for editing npm package files",
   "keywords": [
     "lenne.Tech",
@@ -25,8 +25,8 @@
     "coverage": "jest --coverage",
     "format": "prettier --write 'src/**/*.{js,ts,tsx,json}'",
     "lint": "eslint --ext .js,.ts src",
-    "postinstall": "dist/bin/copy-template.bin.js || true",
-    "prepublishOnly": "npm run build",
+    "postinstall": "$INIT_CWD/node_modules/@lenne.tech/dist/bin/copy-template.bin.js || true",
+    "prepack": "npm run build",
     "preversion": "npm run lint",
     "test": "jest"
   },
