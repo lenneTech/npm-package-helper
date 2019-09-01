@@ -9,7 +9,7 @@ const run = async () => {
   try {
     // Integrate into package.json
     const { data, path } = await NpmPackageHelper.getFile('package.json', {
-      cwd: __dirname
+      cwd: process.cwd()
     });
     if (path && data) {
       // Path to file
