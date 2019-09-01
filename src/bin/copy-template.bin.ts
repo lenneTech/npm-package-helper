@@ -7,7 +7,7 @@ import NpmPackageHelper from '..';
  */
 const run = async () => {
   try {
-    // Set current working directory
+    // Set current working directory: get parameter or use cwd of process
     const cwd = process.argv[2] || process.cwd();
 
     // Integrate into package.json
@@ -19,7 +19,13 @@ const run = async () => {
       const versionSyncPath = join(dirname(path), 'extras', 'sync-version.ts');
 
       // Create directory
-      await fs.mkdir(dirname(versionSyncPath));
+      try {
+        await fs.mkdir(dirname(versionSyncPath));
+      } catch (e) {
+        if (e && e.code !== 'EEXIST') {
+          return e;
+        }
+      }
 
       // Copy file
       await fs.copyFile(
