@@ -7,9 +7,12 @@ import NpmPackageHelper from '..';
  */
 const run = async () => {
   try {
+    // Set current working directory
+    const cwd = process.argv[2] || process.cwd();
+
     // Integrate into package.json
     const { data, path } = await NpmPackageHelper.getFile('package.json', {
-      cwd: process.cwd()
+      cwd
     });
     if (path && data) {
       // Path to file
