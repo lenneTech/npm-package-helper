@@ -57,9 +57,6 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
-  "prettier": {
-    "singleQuote": true
-  },
   "husky": {
     "hooks": {
       "pre-commit": "ts-node --skip-project extras/sync-version.ts && pretty-quick --staged",

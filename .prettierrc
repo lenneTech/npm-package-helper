@@ -1,0 +1,6 @@
+{
+  "singleQuote": true,
+  "plugins": [
+    "./extras/prettier-imports"
+  ]
+}
