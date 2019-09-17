@@ -1,6 +1,6 @@
 {
   "name": "@lenne.tech/npm-package-helper",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Helper for editing npm package files",
   "keywords": [
     "lenne.Tech",
@@ -55,7 +55,8 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "rootDir": "tests"
   },
   "husky": {
     "hooks": {
