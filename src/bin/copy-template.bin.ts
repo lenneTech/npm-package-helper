@@ -41,8 +41,7 @@ const run = async () => {
         !data.husky.hooks['pre-commit'].includes('sync-version')
       ) {
         data.husky.hooks['pre-commit'] =
-          'ts-node --skip-project extras/sync-version.ts && ' +
-          data.husky.hooks['pre-commit'];
+          'ts-node --skip-project extras/sync-version.ts && ' + data.husky.hooks['pre-commit'];
         await NpmPackageHelper.setFile(path, data);
       }
     }
@@ -55,7 +54,7 @@ const run = async () => {
   // Everything is ok
   return;
 };
-run().then(error => {
+run().then((error) => {
   if (error) {
     console.log(error);
   } else {

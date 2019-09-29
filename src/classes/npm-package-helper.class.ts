@@ -27,9 +27,7 @@ export default class NpmPackageHelper {
     const opts = Object.assign({}, options);
 
     // Find file
-    const path = opts.cwd
-      ? await find(fileNameOrPath, opts.cwd)
-      : fileNameOrPath;
+    const path = opts.cwd ? await find(fileNameOrPath, opts.cwd) : fileNameOrPath;
     if (!path) {
       return { path: '', data: null };
     }
@@ -41,10 +39,7 @@ export default class NpmPackageHelper {
   /**
    * Read a file
    */
-  public static readFile(
-    path: string,
-    options: { json?: boolean } = { json: true }
-  ) {
+  public static readFile(path: string, options: { json?: boolean } = { json: true }) {
     return new Promise((resolve, reject) => {
       fs.readFile(path, (err, data) => {
         if (err) {
@@ -114,21 +109,14 @@ export default class NpmPackageHelper {
   /**
    * Get highest semantic version in FileData array
    */
-  public static async getHighestVersion(
-    fileDataArray: IFileData[] | Promise<IFileData>[]
-  ) {
+  public static async getHighestVersion(fileDataArray: IFileData[] | Promise<IFileData>[]) {
     if (!fileDataArray || !fileDataArray.length) {
       return null;
     }
     let highestVersion = '0.0.0';
     for (let item of fileDataArray) {
       item = await item;
-      if (
-        item &&
-        item.data &&
-        item.data.version &&
-        compareVersions(item.data.version, highestVersion) === 1
-      ) {
+      if (item && item.data && item.data.version && compareVersions(item.data.version, highestVersion) === 1) {
         highestVersion = item.data.version;
       }
     }
@@ -138,17 +126,13 @@ export default class NpmPackageHelper {
   /**
    * Find out and set hightest semantic version
    */
-  public static async setHighestVersion(
-    fileDataArray: IFileData[] | Promise<IFileData>[]
-  ) {
+  public static async setHighestVersion(fileDataArray: IFileData[] | Promise<IFileData>[]) {
     // Init
     const promises = [];
     const paths = [];
 
     // Get highest version
-    const highestVersion = await NpmPackageHelper.getHighestVersion(
-      fileDataArray
-    );
+    const highestVersion = await NpmPackageHelper.getHighestVersion(fileDataArray);
 
     // Set highest version
     for (let item of fileDataArray) {
@@ -167,7 +151,7 @@ export default class NpmPackageHelper {
       if (gitPath) {
         await exec(
           `cd ${gitPath} && git add ${paths
-            .map(item => {
+            .map((item) => {
               return item.replace(gitPath + sep, '');
             })
             .join(' ')}`
