@@ -21,8 +21,8 @@ const run = async () => {
       // Create directory
       try {
         await fs.mkdir(dirname(versionSyncPath));
-      } catch (e) {
-        if (e && e.code !== 'EEXIST') {
+      } catch (e: any) {
+        if (e?.code !== 'EEXIST') {
           return e;
         }
       }
@@ -45,8 +45,8 @@ const run = async () => {
         await NpmPackageHelper.setFile(path, data);
       }
     }
-  } catch (e) {
-    if (e && e.code !== 'EEXIST') {
+  } catch (e: any) {
+    if (e?.code !== 'EEXIST') {
       return e;
     }
   }

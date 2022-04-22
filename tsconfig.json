@@ -1,8 +1,17 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
     "experimentalDecorators": true,
-    "lib": ["es2015", "scripthost", "es2015.promise", "es2015.generator", "es2015.iterable", "dom"],
+    "emitDecoratorMetadata": true,
+    "lib": [
+      "es2015",
+      "scripthost",
+      "es2015.promise",
+      "es2015.generator",
+      "es2015.iterable",
+      "dom"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": false,
@@ -11,9 +20,10 @@
     "outDir": "dist",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "strict": false,
-    "target": "es6"
+    "strict": true,
+    "strictNullChecks": false,
+    "target": "es2015"
   },
-  "exclude": ["node_modules"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
